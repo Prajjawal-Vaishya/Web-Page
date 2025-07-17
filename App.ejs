@@ -33,21 +33,20 @@
 
         <!-- BANNER SECTION -->
         <section class="banner flex flex-col items-center justify-center mx-5 mt-6">
-            <div
-                class="banner_component w-full max-w-7xl h-64 flex items-center justify-center text-3xl font-semibold text-gray-700 select-none">
-                <button aria-label="Previous Banner"
-                    class="bg-white md:block hidden z-10 p-2 h-24 md:h-48 shadow hover:bg-gray-100 focus:outline-none">
+            <div id="banner-container"  class="banner_component w-full max-w-7xl h:48 sm:h-60 md:h-64 lg:h-[50vh] flex items-center justify-center text-3xl font-semibold text-gray-700 select-none">
+                <button aria-label="Previous Banner" id="prevSlide" class="bg-white md:block hidden z-10 p-2 h-24 md:h-48 shadow hover:bg-gray-100 focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <div
-                    class="bg-gray-300 rounded shadow-lg overflow-hidden z-50 w-full max-w-7xl h-64 flex items-center justify-center text-3xl font-semibold text-gray-700 select-none">
-                    BANNER
+                <div class="bg-gray-300 rounded shadow-lg overflow-hidden z-50 w-full max-w-7xl h-48 sm:h-60 md:h-64 lg:h-[50vh] flex items-center justify-center text-3xl font-semibold text-gray-700 select-none">
+                    <img id="banner-img" class="w-full h-full object-cover" src="image/banner/banner0.jpg" alt="banner_img">
+                    <!-- <div class="text-3xl font-semibold text-gray-700 select-none">
+                        
+                    </div> -->
                 </div>
-                <button aria-label="Next Banner"
-                    class="bg-white md:block hidden p-2 h-24 md:h-48 z-10 shadow hover:bg-gray-100 focus:outline-none">
+                <button aria-label="Next Banner" id="nextSlide" class="bg-white md:block hidden p-2 h-24 md:h-48 z-10 shadow hover:bg-gray-100 focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -56,11 +55,11 @@
             </div>
 
             <div class="flex space-x-2 justify-center p-5">
-                <span class="actice w-9 h-3 rounded-full bg-gray-700"></span>
-                <span class=" w-3 h-3 rounded-full bg-gray-400"></span>
-                <span class="w-3 h-3 rounded-full bg-gray-400"></span>
-                <span class="w-3 h-3 rounded-full bg-gray-400"></span>
-                <span class="w-3 h-3 rounded-full bg-gray-400"></span>
+                <span id="dot-0" class="active w-9 h-3 rounded-full bg-gray-700 transition-all"></span>
+                <span id="dot-1" class=" w-3 h-3 rounded-full bg-gray-400 transition-all"></span>
+                <span id="dot-2" class="w-3 h-3 rounded-full bg-gray-400 transition-all"></span>
+                <span id="dot-3" class="w-3 h-3 rounded-full bg-gray-400 transition-all"></span>
+                <span id="dot-4" class="w-3 h-3 rounded-full bg-gray-400 transition-all"></span>
             </div>
         </section>
 
@@ -166,7 +165,7 @@
 
     <!-- Pop-up Form Modal -->
     <div class="setup-irrigation hidden p-3 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="setup-box max-w-md mx-auto bg-gray-200 rounded shadow overflow-hidden  transform transition-all duration-500 -translate-y-full opacity-0">
+        <div class="setup-box max-w-md mx-auto bg-gray-200 rounded shadow overflow-hidden transform transition-all duration-500 -translate-y-full opacity-0">
             <div class="top-panel bg-indigo-600 text-gray-200 p-4 flex justify-between shadow-md shadow-gray-400">
                 <div class="title ">
                     <h1 class="text-lg font-bold">Setup Smart Irrigation</h1>
@@ -224,8 +223,7 @@
                 </form>
             </div>
             <div class="save-data my-4 flex justify-center">
-                <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"" type="
-                    button">Save</button>
+                <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" type="button">Save</button>
             </div>
         </div>
     </div>

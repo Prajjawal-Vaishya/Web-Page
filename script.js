@@ -12,9 +12,84 @@ function updateMoisture(moisture) {
     circle.setAttribute('stroke-dasharray', `${percentage}, 100`);
     text.textContent = `${percentage}%`;
 }
-
 // Example usage:
 updateMoisture(20);
+
+
+// Banner Functionality
+let banners = ["image/banner/banner0.png", "image/banner/banner1.png", "image/banner/banner2.png", "image/banner/banner3.png", "image/banner/banner4.jpg"];
+let currentIndex = 0;
+let sliderInterval;
+const prevBtn = document.getElementById('prevSlide');
+const nextBtn = document.getElementById('nextSlide');
+const banner_box = document.getElementById('banner-img')
+console.log(banner_box);
+
+function functBtn() {
+    prevBtn.addEventListener("click", ()=> {
+        prevSlide();
+    });
+    nextBtn.addEventListener("click", ()=> {
+        nextSlide();
+    });
+}
+
+function updateBanner() {
+    banner_box.src = banners[currentIndex];
+    for (let i = 0; i < banners.length; i++) {
+        document.getElementById(`dot-${i}`).classList.remove('bg-gray-700');
+        document.getElementById(`dot-${i}`).classList.remove('w-9');
+        document.getElementById(`dot-${i}`).classList.remove('active');
+        document.getElementById(`dot-${i}`).classList.add('bg-gray-400');
+        document.getElementById(`dot-${i}`).classList.add('w-3');
+    }
+    document.getElementById(`dot-${currentIndex}`).classList.add('bg-gray-700');
+    document.getElementById(`dot-${currentIndex}`).classList.add('w-9');
+    document.getElementById(`dot-${currentIndex}`).classList.add('active');
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + banners.length) % banners.length;
+    updateBanner();
+    resetAutoSlider();
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % banners.length;
+    updateBanner();
+    resetAutoSlider();
+}
+
+function startAutoSlider() {
+    sliderInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % banners.length;
+        updateBanner();
+    }, 3000); // Change slide every 3 seconds
+}
+
+function resetAutoSlider() {
+    clearInterval(sliderInterval);
+    startAutoSlider();
+}
+
+// Touch swipe functionality
+let startX = 0;
+document.getElementById('banner-container').addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+});
+
+document.getElementById('banner-container').addEventListener('touchend', function (e) {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+        nextSlide();
+    } else if (endX - startX > 50) {
+        prevSlide();
+    }
+});
+
+functBtn();
+updateBanner();
+startAutoSlider();
 
 
 // Setup Water Pump
@@ -23,7 +98,6 @@ const setup_irrigation = document.querySelector(".setup-irrigation");
 const btn_setup_waterpump = document.getElementById("setup-waterpump");
 const close_setup_waterpump = document.getElementById("close-waterpump-setup");
 const setup_box = setup_irrigation.querySelector(".setup-box");
-console.log(setup_box);
 
 function openclose_setup(checker) {
     if (checker) {
@@ -43,10 +117,10 @@ function openclose_setup(checker) {
     }
 }
 
-btn_setup_waterpump.addEventListener("click", function() {
+btn_setup_waterpump.addEventListener("click", function () {
     openclose_setup(1);
 });
 
-close_setup_waterpump.addEventListener("click",function() {
+close_setup_waterpump.addEventListener("click", function () {
     openclose_setup(0);
 });
