@@ -26,10 +26,10 @@ const banner_box = document.getElementById('banner-img')
 console.log(banner_box);
 
 function functBtn() {
-    prevBtn.addEventListener("click", ()=> {
+    prevBtn.addEventListener("click", () => {
         prevSlide();
     });
-    nextBtn.addEventListener("click", ()=> {
+    nextBtn.addEventListener("click", () => {
         nextSlide();
     });
 }
@@ -92,6 +92,10 @@ updateBanner();
 startAutoSlider();
 
 
+// Irrigation: Water Supply Checker
+let waterSupply_checker = false;
+
+
 // Setup Water Pump
 const home_panel = document.getElementById("home-panel");
 const setup_irrigation = document.querySelector(".setup-irrigation");
@@ -123,4 +127,49 @@ btn_setup_waterpump.addEventListener("click", function () {
 
 close_setup_waterpump.addEventListener("click", function () {
     openclose_setup(0);
+});
+
+
+// Notification Function
+function showToast(text) {
+    const toast = document.getElementById('toast');
+    toast.innerText = text;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 3000); // auto hide after 3 seconds
+}
+
+
+// Function that start irrigation manually
+const start_irrigation = document.getElementById('start-irrigation');
+
+function startIrrigation() {
+    showToast('Now, Irrigation Started');
+}
+
+start_irrigation.addEventListener("click", () => {
+    if (waterSupply_checker == false) {
+        waterSupply_checker = true;
+        startIrrigation();
+    } else {
+        showToast('Already, Irrigation Working');
+    }
+});
+
+
+// Function that stop irrigation on emergency 
+const  stop_irrigation = document.getElementById("stop-irrigation");
+
+function stopIrrigation() {
+    showToast('Successfully, Irrigation Stopped');
+}
+
+stop_irrigation.addEventListener("click", () => {
+    if (waterSupply_checker) {
+        waterSupply_checker = false;
+        stopIrrigation();
+    } else {
+        showToast('Already, Irrigation Not Stopped');
+    }
 });
