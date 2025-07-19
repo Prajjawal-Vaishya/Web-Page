@@ -1,10 +1,4 @@
-function prevSlide() {
-    alert('Previous Banner');
-}
-function nextSlide() {
-    alert('Next Banner');
-}
-
+// Moisture Update work using IOT
 function updateMoisture(moisture) {
     const circle = document.getElementById('moisture-fill');
     const text = document.getElementById('moisture-percentage');
