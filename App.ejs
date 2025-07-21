@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="style/bot.css">
 </head>
 
 <body class="bg-gray-200 min-h-screen flex flex-col">
@@ -505,7 +506,12 @@
                         Application Form
                     </h2>
                     <div onclick="closeForm()">
-                        <svg class="fill-gray-200 hover:fill-red-600 cursor-pointer transition-colors" width="32px" xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"></path></svg>
+                        <svg class="fill-gray-200 hover:fill-red-600 cursor-pointer transition-colors" width="32px"
+                            xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
 
@@ -615,10 +621,62 @@
 
 
     <section class="bot">
-        
+        <!-- Chat Widget -->
+        <div class="chat-widget">
+            <div class="chat-window" id="chatWindow">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-header-content">
+                        <div class="chat-title">AgraConnect Chat Support</div>
+                        <div class="chat-subtitle">We're here to help!</div>
+                    </div>
+                    <div class="online-indicator"></div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        👋 Hello! Welcome to our website. How can I help you today?
+                    </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <span>Bot is typing</span>
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..."
+                            autocomplete="off">
+                        <button class="send-button" id="sendButton">
+                            <svg class="send-icon" viewBox="0 0 24 24">
+                                <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Toggle Button -->
+            <button class="chat-toggle" id="chatToggle">
+                <svg class="chat-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12,3C17.5,3 22,6.58 22,11C22,15.42 17.5,19 12,19C10.76,19 9.57,18.82 8.47,18.5C5.55,21 2,21 2,21C4.33,18.67 4.7,17.1 4.75,16.5C3.05,15.07 2,13.13 2,11C2,6.58 6.5,3 12,3Z" />
+                </svg>
+            </button>
+        </div>
     </section>
 
     <script src="script.js"></script>
+    <!-- bot script -->
+    <script src="bot.js"></script>
 </body>
 
 </html>
